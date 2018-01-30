@@ -1,0 +1,60 @@
+<!--线路名称-->
+<view class="travelLine">
+  <text>{{submitOrderInfo.travelLine}}</text>
+</view>
+<!--出行日期 人员数-->
+<view class="dateInfo">
+  <text>出发日期：{{submitOrderInfo.date}}</text>
+</view>
+<view class="dateInfo memberSum">
+  <text>成人：{{submitOrderInfo.adultNum}}</text>
+  <text>儿童A：{{submitOrderInfo.childNumA}}</text>
+  <text>儿童B：{{submitOrderInfo.childNumB}}</text>
+</view>
+<!--出行人信息-->
+<view class="information">
+  <view class="travelMember">
+    <view class="info_Item">
+      <text class="columTit">出行人信息</text>
+    </view>
+    <view class="info_Item" wx:for="{{adultsArray}}" bindtap="toAddMemberInfo" data-idx="{{index}}" data-idx="{{index}}" data-memberKind="1">
+      <text class="itemColumTit">成人</text>
+      <text class="waitInput">{{item.name}}</text>
+      <image src="../../image/icon-arrowdown.png"></image>
+    </view>
+    <view class="info_Item" wx:for="{{childsArray}}" bindtap="toAddMemberInfo" data-idx="{{index}}" data-memberKind="0">
+      <text class="itemColumTit">儿童</text>
+      <text class="waitInput">{{item.name}}</text>
+      <image src="../../image/icon-arrowdown.png"></image>
+    </view>
+  </view>
+</view>
+<!--出行人信息-->
+<view class="information mgT">
+  <view class="travelMember">
+    <view class="info_Item">
+      <text class="columTit">保险</text>
+    </view>
+    <view class="info_Item" wx:for="{{insuranceList}}" wx:for-index="insuranceIdx" wx:for-item="insuranceItem">
+      <text class="insurance" wx:if="{{insuranceItem.FBX!=0}}">¥{{insuranceItem.FBX}}x{{submitOrderInfo.adultNum+submitOrderInfo.childNumA+submitOrderInfo.childNumB}}</text>
+      <text class="insurance" wx:if="{{insuranceItem.FBX==0}}">不要保险</text>
+      <image src="{{insuranceIdx==insuranceCur?'../../image/icon/squared.png':'../../image/icon/square.png'}}" bindtap="chooseInsurance" data-idx="{{insuranceIdx}}" data-insuranceid="{{insuranceItem.FBX}}"></image>
+    </view>
+    <!--<view class="info_Item">
+      <text class="insurance">不要保险</text>
+      <image src="{{insuranceList.length+1==insuranceCur?'../../image/icon/squared.png':'../../image/icon/square.png'}}" data-idx="{{insuranceList.length+1}}" data-insuranceid="0" bindtap="chooseInsurance"></image>
+    </view>-->
+  </view>
+</view>
+
+<!--合计支付-->
+  <view class="footer_total">
+    <view class="toatl_price">合计：¥{{submitOrderInfo.totalPrice}}         </view>
+    <button class="submitBt" bindtap="toPay" disabled="{{canDo}}">支付      </button>
+  </view>
+
+<!--</view>-->
+
+ <loading hidden="{{loadingHidden}}">
+  加载中...
+</loading> 

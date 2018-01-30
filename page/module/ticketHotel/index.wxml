@@ -1,0 +1,55 @@
+<!--tab-->
+<view class="tabLine">
+  <view wx:for="{{tab}}" class="tabItem {{index==cur?'active':''}}" bindtap="changeTab" data-idx="{{index}}">{{item}}</view>
+</view>
+<!--member-->
+<view class="memberWrap">
+  <view class="member">
+    <view class="member_item">
+      <text>成人</text>
+      <view class="numChange">
+        <image src="../../image/icon/min.png"></image>
+          <text class="num">2</text>
+          <image src="../../../image/icon/add-active.png"></image>
+      </view>
+    </view>
+    <view class="member_item">
+      <text>儿童(2-12岁)</text>
+      <view class="numChange">
+        <image src="../../../image/icon/min.png"></image>
+          <text class="num">2</text>
+          <image src="../../../image/icon/add-active.png"></image>
+      </view>
+    </view>
+    <view class="member_item">
+      <text>婴儿(0-2岁)</text>
+      <view class="numChange">
+        <image src="../../../image/icon/min.png"></image>
+          <text class="num">2</text>
+          <image src="../../../image/icon/add-active.png"></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!--main-->
+<view class="main">
+  <view class="mainBlock">
+    <view class="block_item ticketTab">
+      <text class="{{ticketCur==0?'Tactive':''}}" bindtap="changeTicketTab" data-idx="0">往返</text>
+      <text class="{{ticketCur==1?'Tactive':''}}" bindtap="changeTicketTab" data-idx="1">单程</text>
+    </view>
+    <view class="block_item choose">
+        <text>出发地</text>
+        <text>--</text>
+        <text>目的地</text>
+    </view>
+    <view class="block_item choose">
+        <text>出发日期</text>
+        <text>--</text>
+        <text>返程日期</text>
+    </view>
+    <view class="sideBan">机票</view>
+  </view>
+  
+</view>

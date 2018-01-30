@@ -1,0 +1,73 @@
+<!--发票抬头-->
+<view class="receipt_name">
+    <text class="tit">名称</text>
+    <input placeholder="填写准确的抬头名称" bindinput="changeName"/>
+</view>
+
+<!--默认抬头-->
+<view class="receipt_default">
+    <text class="tit">默认抬头</text>
+    <switch checked="{{setDefault}}" bindchange="switchChange"/>
+</view>
+
+<!--单位 个人-->
+<!--<view class="receipt_kind">
+    <view class="receipt_item kind" bindtap="chooseKindUI" data-index="0" data-kind="单位">
+        <icon type="{{unitOrIndividual[0]== true ? 'success_circle' : 'circle'}}"/>
+        <text>单位</text>
+    </view>
+    <view class="receipt_item kind" bindtap="chooseKindUI" data-index="1" data-kind="个人">
+        <icon type="{{unitOrIndividual[1]== true ? 'success_circle' : 'circle'}}"/>
+        <text>个人</text>
+    </view>
+</view>-->
+
+<!--普通 专用-->
+<!--<view class="receipt_kind second_receipt_kind" wx:if="{{unitOrIndividual[0]==true}}">-->
+<view class="receipt_kind ">
+    <view class="receipt_item kind" bindtap="chooseRceiptKind" data-index="0" data-kind="增值税普通发票">
+        <icon type="{{normalOrSpecial[0]?'success_circle':'circle'}}"/>
+        <text>增值税普通发票</text>
+    </view>
+    <view class="receipt_item kind" bindtap="chooseRceiptKind" data-index="1" data-kind="增值税专用发票">
+        <icon type="{{normalOrSpecial[1]?'success_circle':'circle'}}"/>
+        <text>增值税专用发票</text>
+    </view>
+</view>
+
+<!--税号-->
+<view class="receipt_number">
+    <text class="tit">税号</text>
+    <input placeholder="请输入纳税人识别号" bindinput="changeNumber"/>
+</view>
+<!--单位地址-->
+<view class="receipt_address" wx:if="{{normalOrSpecial[1]==true}}">
+    <text class="tit">单位地址</text>
+    <input placeholder="请输入收票单位注册地址" bindinput="changeAddress"/>
+</view>
+<!--电话号码-->
+<view class="receipt_tel" wx:if="{{normalOrSpecial[1]==true}}">
+    <text class="tit">电话号码</text>
+    <input placeholder="请输入公司电话号码" bindinput="changeTel"/>
+</view>
+<!--开户银行-->
+<view class="receipt_bank" wx:if="{{normalOrSpecial[1]==true}}">
+    <text class="tit">开户银行</text>
+    <input placeholder="请输入收票单位开户银行" bindinput="changeBank"/>
+</view>
+<!--用户账号-->
+<view class="receipt_BankCode" wx:if="{{normalOrSpecial[1]==true}}">
+    <text class="tit">用户账号</text>
+    <input placeholder="请输入收票单位用户账号" bindinput="changeBankCode"/>
+</view>
+
+<!--税号-->
+<view class="receipt_email">
+    <text class="tit">收票邮箱</text>
+    <input placeholder="请输入收票邮箱" bindinput="changeEmail"/>
+</view>
+
+<view class="suggestion">建议全部填写，以便开具增值税专用发票</view>
+
+<!--保存-->
+<button bindtap="saveReceipt"  type="warn" class="saveReceipt_add" hover-class="addHover" disabled="{{canDo}}">保存</button>

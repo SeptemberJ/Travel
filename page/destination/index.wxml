@@ -1,0 +1,119 @@
+<!--GPS-->
+<view class="locationBlock" bindtap="changeCity">
+  <image src="../../image/icon/addressWhite.png"></image>
+  <text>{{city}}</text>
+  <image src="../../image/icon/arrow_down.png"></image>
+</view>
+
+<!--searchBlock-->
+<view class="searchBlock">
+  <view class="searchBox">
+    <view class="searchIcon">
+      <image src="../../image/icon/search.png"></image>
+    </view>
+    <view class="searchInput">
+      <input placeholder="目的地、主题或关键字" bindinput="inputSearchKey" value="{{SearchKey}}"/>
+    </view>
+    <view class="searchClear" wx:if="{{SearchKey!=''}}">
+      <image src="../../image/icon/close.png" bindtap="clearSearchKey"></image>
+    </view>
+    <!--<view class="searchGo" wx:if="{{SearchKey!=''}}">
+      <text>搜索</text>
+    </view>-->
+  </view>
+</view>
+
+<!--searchResult-->
+<view class="searchResult" wx:if="{{SearchKey!=''}}">
+  <view class="result_item" wx:for="{{resultList}}" wx:if="{{resultList.length>0}}">
+    <navigator url="../wareClip/calendar/index?id={{item.FID_Z}}&name={{item.XLMC}}" hover-class="navigator-hover">
+      <text data-id="{{item.FID_Z}}">{{item.XLMC}}</text>
+    </navigator>
+  </view>
+  <view wx:if="{{resultList.length<=0}}" class="noData">
+      <image src="../../image/icon/error.png"></image>
+      <text>暂无数据</text>
+  </view> 
+</view>
+
+<!--sort-->
+<view class="sort" wx:if="{{SearchKey==''}}">
+  <!--全部-->
+  <view class="sort_kind">
+    <text bindtap="showAll">全部</text>
+  </view>
+  <!--出发日期-->
+  <view class="sort_kind">
+    <picker mode="date" value="{{departureDate}}" bindchange="bindDateChange">
+    <view class="picker">{{departureDate}}</view>
+  </picker>
+  </view>
+  <!--天数-->
+  <view class="sort_kind">
+    <picker bindchange="bindDurationChange" value="{{durationIdx}}" range="{{durationArray}}">
+    <view class="picker">{{durationArray[durationIdx]}}</view>
+  </picker>
+  </view>
+  <!--价格-->
+  <view class="sort_kind">
+    <picker bindchange="bindPriceChange" value="{{priceSortIdx}}" range="{{priceSortArray}}">
+    <view class="picker">{{priceSortArray[priceSortIdx]}}</view>
+  </picker>
+  </view>
+
+</view>
+
+<!--destinationList-->
+<view class="destinationList" wx:if="{{SearchKey==''}}">
+  <!--menu-->
+  <scroll-view scroll-y="true" class="menu_block">
+    <view class="menu_block_inner">
+      <block wx:for="{{menuList}}" wx:key="">
+          <view class="menuListF_items {{cur==index ? 'active' : ''}}" bindtap="menuTabChange"  data-index="{{index}}" data-id="{{index}}">
+          {{item[0].MINGCHEN}}
+          </view>
+      </block>
+    </view>
+  </scroll-view>
+  <!--ware-->
+  <scroll-view scroll-y="true" class="ware_block" bindscrolltolower="" lower-threshold="">
+    <view class="ware_block_inner" wx:if="{{columnList.length>0}}">
+          <!--wareClip-->
+          <view class="wareClip">
+            <block wx:for="{{columnList}}" wx:key="" wx:for-item="ListItem">
+              <view class="wareClip_item" bindtap="toWareClip" data-id="{{ListItem.FID_Z}}" data-linename="{{ListItem.XLMC}}">
+                  <view class="inner_block">
+                    <block wx:if="{{ListItem}}" wx:key="">
+                      <view class="img_block">
+                        <image src="{{ListItem.IMG}}" mode="scaleToFill"></image>
+                      </view>
+                    </block>
+                  </view>
+                <!--简介-->
+                <view class="simpleIntro">
+                  <text class="travelTit bold">{{ListItem.XLMC}}</text>
+                  <text class="simpleIntro_text">出发地：{{ListItem.CHENGSHI}}</text>
+                  <text class="simpleIntro_text">天数：{{ListItem.DAYS}}</text>
+                  <text class="simpleIntro_text orange bold">价格：¥{{ListItem.JIAGE}}</text>
+                  <text class="simpleIntro_text orange bold" wx:if="{{ListItem.YH1=='0.00'}}">优惠价：/</text>
+                  <text class="simpleIntro_text orange bold" wx:if="{{ListItem.YH1!='0.00'}}">优惠价：¥{{ListItem.YH1}}</text>
+                  <!--<text class="simpleIntro_text">{{ListItem.XLLB}}</text>-->
+                </view>
+              </view>
+            </block>
+          </view>
+
+
+
+    </view> 
+    <view wx:else class="noData">
+      <image src="../../image/icon/error.png"></image>
+      <text>暂无数据</text>
+    </view> 
+  </scroll-view>
+
+</view>
+
+<loading hidden="{{loadingHidden}}">
+  加载中...
+</loading>

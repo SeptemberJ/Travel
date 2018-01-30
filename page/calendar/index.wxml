@@ -1,0 +1,24 @@
+<!--年月-->
+<view class="YearMonth">
+  <view class="prev" bindtap="handleCalendar" data-handle="prev">《</view>
+  <view class="showData">{{cur_year || "--"}} 年 {{cur_month || "--"}} 月</view>
+  <view class="next" bindtap="handleCalendar" data-handle="next">》</view>
+</view>
+
+<!--星期-->
+<view class="weeksTit">
+  <view class="weeksTit_item" wx:for="{{weeks_ch}}" wx:key="{{index}}" data-idx="{{index}}">{{item}}</view>
+</view>
+
+<!--日期-->
+<view class="days">
+            <!--空格-->
+            <view wx:if="{{hasEmptyGrid}}" class="days_item emptyItem" wx:for="{{empytGrids}}" wx:key="{{index}}" data-idx="{{index}}">
+            </view>
+            <!--实际天数-->
+            <view wx:for="{{days}}" wx:key="{{index}}" class="days_item {{index+1 == travelDays[index].date &&  travelDays[index].nowPrice!='' ? 'specialItem' : 'normalItem'}} {{choosed==index+1?'active':''}}"  data-idx="{{index}}">
+                <view class="">{{item}}</view>
+                <view class="dayPrice oldPrice" wx:if="{{travelDays[index].oldPrice}}" data-idx="{{index}}" bindtap="{{index+1>=cur?'canChoose':''}}">¥{{travelDays[index].oldPrice}}</view>
+                <view class="dayPrice" wx:if="{{travelDays[index].nowPrice}}" data-idx="{{index}}" bindtap="{{index+1>=cur?'canChoose':''}}">¥{{travelDays[index].nowPrice}}</view>
+            </view>
+        </view>

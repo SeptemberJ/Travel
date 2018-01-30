@@ -1,0 +1,106 @@
+<import src="../../wxParse/wxParse.wxml"/>
+<!--GPS-->
+<!--<view class="locationBlock" bindtap="changeCity">
+  <image src="../../../image/icon/addressWhite.png"></image>
+  <text>{{city}}</text>
+  <image src="../../../image/icon/arrow_down.png"></image>
+</view>-->
+<!--banner-->
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block>
+    <swiper-item>
+      <image src="{{travelInfo.FPIC}}" class="slide-image" bindtap="" data-url="{{travelInfo.FPIC}}"/>
+    </swiper-item>
+  </block>
+  <!-- <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" bindtap="previewImage" data-url="{{item}}"/>
+    </swiper-item>
+  </block> -->
+</swiper>
+
+<!--线路简介-->
+<view class="simpleIntroduction">
+  <view class="simpleIntroduction_inner">
+    <view class="simpleIntro_item simpleIntro_tit">{{travelInfo.XLMC}}</view>
+    <view class="simpleIntro_item">集合地：{{travelInfo.address}}
+    </view>
+    <view class="special_item">价格：成人 ¥{{travelInfo.JIAGEcheng}}/人  儿童A ¥{{travelInfo.JIAGEertA}}/人 儿童B ¥{{travelInfo.JIAGEertB}}/人</view>
+    <view class="special_item preferential" wx:if="{{travelInfo.YH1cheng!=0}}">优惠价格：成人 ¥{{travelInfo.YH1cheng}}/人  儿童A ¥{{travelInfo.YH1ertA}}/人 儿童B ¥{{travelInfo.YH1ertB}}/人</view>
+    <view class="simpleIntro_item">出发地：{{travelInfo.CHENGSHI}}</view>
+    <view class="simpleIntro_item">出行天数：{{travelInfo.DAYS}}</view>
+    <view class="simpleIntro_item">剩余票数：{{travelInfo.ZWS}}</view>
+    <!--<view class="simpleIntro_item">组团情况：{{travelInfo.list[0].XLLB}}</view>-->
+  </view>
+</view>
+
+<view class="blank"></view>
+
+
+<!--成人儿童数量-->
+<view class="members">
+  <text class="columnTit">添加出行人</text>
+  <view class="member_item">
+    <text class="left">成人</text>
+    <view class="right">
+      <view class="numChange">
+        <image src="{{adultNum>0?'../../../image/icon/min-active.png':'../../../image/icon/min.png'}}" bindtap="minAdults"></image>
+        <text class="num {{adultNum>0?'numColor':''}}" >{{adultNum}}</text>
+        <image src="../../../image/icon/add-active.png" bindtap="addAdults"></image>
+      </view>
+    </view>
+  </view>
+  <!--儿童1-->
+  <view class="member_item">
+    <text class="left">儿童A(身高为0-1.2米)</text>
+    <view class="right">
+     <view class="numChange">
+        <image src="{{childNumA>0?'../../../image/icon/min-active.png':'../../../image/icon/min.png'}}" bindtap="minChildsA"></image>
+        <text class="num {{childNumA>0?'numColor':''}}">{{childNumA}}</text>
+        <image src="../../../image/icon/add-active.png" bindtap="addChildsA"></image>
+      </view>
+    </view>
+  </view>
+  <!--儿童2-->
+  <view class="member_item">
+    <text class="left">儿童B(身高为1.2-1.5米)</text>
+    <view class="right">
+     <view class="numChange">
+        <image src="{{childNumB>0?'../../../image/icon/min-active.png':'../../../image/icon/min.png'}}" bindtap="minChildsB"></image>
+        <text class="num {{childNumB>0?'numColor':''}}">{{childNumB}}</text>
+        <image src="../../../image/icon/add-active.png" bindtap="addChildsB"></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!--其他费用  -->
+<view class="blank"></view>
+<view class="attachedCost">
+  <text class="columnTit">其他服务</text>
+  <view class="attachedCost_item" wx:for="{{travelInfo.qita}}" wx:for-index="attachedCostIdx" wx:for-item="attachedCostItem">
+    <view class="info_Item">
+      <!-- <text class="insurance" wx:if="{{insuranceItem.FBX!=0}}">¥{{insuranceItem.FBX}}x{{submitOrderInfo.adultNum+submitOrderInfo.childNumA+submitOrderInfo.childNumB}}</text> -->
+      <text class="insurance">{{attachedCostItem.FWXM}} {{attachedCostItem.FWXMAMOUNT}}¥/人</text>
+       <image src="{{attachedCostItem.choosed?'../../../image/icon/squared.png':'../../../image/icon/square.png'}}" bindtap="chooseAttachedCost" data-idx="{{attachedCostIdx}}"></image> 
+    </view>
+  </view>
+</view>
+
+<view class="blank"></view>
+<!--线路简介-->
+<view class="introduction">
+  <text class="columnTit">线路简介</text>
+  <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+</view>
+
+<!--submitBt-->
+<view class="footer_total">
+    <view class="toatl_price">合计：¥{{totalPrice}}</view>
+    <button class="submitBt" bindtap="submitOrder" disabled="{{canDo}}">提交订单</button>
+</view>
+
+<loading hidden="{{loadingHidden}}">
+  加载中...
+</loading>

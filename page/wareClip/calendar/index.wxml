@@ -1,0 +1,48 @@
+<import src="../../wxParse/wxParse.wxml"/>
+
+<view class="chooseTip">
+  <image src="../../../image/icon/calendar2.png"></image>
+  <text>请选择出发日期</text>
+</view>
+
+<view class="blank"></view>
+<!--日历-->
+<!--年月-->
+<view class="YearMonth">
+  <image class="prev" bindtap="handleCalendarPre" data-handle="prev" src="../../../image/icon/pre.png"></image>
+  <view class="showData">{{cur_year || "--"}} 年 {{cur_month || "--"}} 月</view>
+  <image class="next" bindtap="handleCalendarNext" data-handle="next" src="../../../image/icon/next.png"></image>
+</view>
+
+<!--星期-->
+<view class="weeksTit">
+  <view class="weeksTit_item" wx:for="{{weeks_ch}}" wx:key="{{index}}" data-idx="{{index}}">{{item}}</view>
+</view>
+
+<!--日期-->
+<view class="days">
+    <!--空格-->
+    <view wx:if="{{hasEmptyGrid}}" class="days_item emptyItem" wx:for="{{empytGrids}}" wx:key="{{index}}" data-idx="{{index}}">
+    </view>
+    <!--实际天数-->
+    <!--有席位-->
+     <!-- <view wx:for="{{days}}" wx:key="{{index}}" class="days_item {{priceArray[index].ZWS!=0 && priceArray[index].ifCanChoose ? 'specialItem' : 'normalItem'}} {{choosed==index+1?'active':''}}"  data-idx="{{index}}"
+    data-month="{{curMonth}}"  bindtap="{{priceArray[index].ifCanChoose && priceArray[index].ZWS!=0 && priceArray[index].zws!=0 ?'canChoose':''}}" data-fidz="{{priceArray[index].FID_Z}}">  -->
+     <view wx:for="{{days}}" wx:key="{{index}}" class="days_item {{priceArray[index].ZWS!=-1 && priceArray[index].ifCanChoose ? 'specialItem' : 'normalItem'}} {{choosed==index+1?'active':''}}"  data-idx="{{index}}"
+    data-month="{{curMonth}}"  bindtap="{{priceArray[index].ifCanChoose && priceArray[index].ZWS!=-1 ?'canChoose':''}}" data-fidz="{{priceArray[index].FID_Z}}"> 
+        <view class="">{{item}}</view>
+        <view class="dayPrice {{priceArray[index].preferentialPrice==0?'':'oldPrice'}}" wx:if="{{priceArray[index].price!=0 && priceArray.length>0 && priceArray[index].ZWS!=0}}" data-idx="{{index}}">
+          <text>¥{{priceArray[index].price}}</text>
+        </view>
+        <view class="dayPrice" wx:if="{{priceArray[index].preferentialPrice!=0 && priceArray.length>0 && priceArray[index].ZWS!=0}}" data-idx="{{index}}" >
+          <text>¥{{priceArray[index].preferentialPrice}}</text>
+        </view>
+        <view class="dayPrice" wx:if="{{priceArray.length>0 && priceArray[index].ZWS==0}}" data-idx="{{index}}" >
+          <text>已满</text>
+        </view>
+    </view>
+</view>
+
+<loading hidden="{{loadingHidden}}">
+  加载中...
+</loading>

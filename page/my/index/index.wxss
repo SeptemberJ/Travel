@@ -1,0 +1,108 @@
+page {
+	background: #eee;
+}
+
+/*user info*/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+	justify-content: center;
+  height: 250rpx;
+  /*background: #f5f5f5;*/
+  background: #f5f5f5 url('http://pic.qiantucdn.com/58pic/21/66/24/44j58PICUFA_1024.jpg!/fw/780/watermark/url/L3dhdGVybWFyay12MS4zLnBuZw==/align/center') no-repeat top right;
+	/*background-image: url('http://pic.qiantucdn.com/58pic/21/66/24/44j58PICUFA_1024.jpg!/fw/780/watermark/url/L3dhdGVybWFyay12MS4zLnBuZw==/align/center');*/
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+.userinfo-nickname {
+	margin-top: 10rpx;
+  color: #333;
+}
+
+/*order*/
+.colName{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 80rpx;
+	/*margin-top:20rpx;*/
+	background: #fff;
+	border-bottom: 1rpx solid #ddd;
+}
+.colName text{
+	padding-left: 20rpx;
+	color: #666;
+}
+.order-area {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+	margin-bottom: 20rpx;
+  padding: 20rpx 0;
+}
+
+.order {
+	width: 33.3%;
+	text-align: center;
+}
+
+.order image {
+	width: 90rpx;
+	height: 90rpx;
+}
+
+.order text{
+	display: block;
+	font-size: 30rpx;
+	color: #666;
+}
+
+/*menu list*/
+.tableviewcell {
+	padding: 20rpx 10rpx;
+	border-bottom: 1rpx solid #ddd;
+	color: #666;
+	background: white;
+	display: flex;
+	align-items: center;
+}
+.tableviewcell .right{
+	flex-grow:1;
+	display: flex;
+  flex-direction: column;
+  align-items: center;
+	padding-top: 15rpx;
+}
+.tableviewcell .right image{
+	display: block;
+	float: right;
+	width:50rpx;
+	height: 50rpx;
+}
+
+/*left icon*/
+.tableviewcell image {
+	width: 60rpx;
+	height: 60rpx;
+}
+
+/*text*/
+.tableviewcell text {
+	flex-grow:10;
+	padding-left: 15rpx;
+}
+
+/*button*/
+.logout {
+	margin: 30rpx;
+}
+

@@ -1,0 +1,129 @@
+<!--banner-->
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" />
+    </swiper-item>
+  </block>
+</swiper>
+
+<!--module-->
+<view class="module">
+  <view class="module_line first_line">
+    <view class="module_item">
+      <image src="../../image/icon/list_travel_location.png"></image>
+      <text>跟团游</text>
+    </view>
+    <view class="module_item">
+      <image src="../../image/icon/airplane-around-earth.png"></image>
+      <text>参团游</text>
+    </view>
+    <view class="module_item">
+      <image src="../../image/icon/luggage.png"></image>
+      <text>自由行</text>
+    </view>
+    <view class="module_item">
+      <image src="../../image/icon/mf_hotelbtn_normal.png"></image>
+      <text>机+酒</text>
+    </view>
+    <view class="module_item">
+      <image src="../../image/icon/icon_car.png"></image>
+      <text>周边游</text>
+    </view>
+  </view>
+  
+  <view class="module_line">
+    <view class="module_item">
+      <image src="../../image/icon/guide.png"></image>
+      <text>当地向导</text>
+    </view>
+    <view class="module_item">
+      <image src="../../image/icon/balloon.png"></image>
+      <text>主题游</text>
+    </view>
+    <view class="module_item">
+      <image src="../../image/icon/bachelorCap.png"></image>
+      <text>亲子·游学</text>
+    </view>
+    <view class="module_item">
+      <image src="../../image/icon/diamond.png"></image>
+      <text>高端游</text>
+    </view>
+    <view class="module_item">
+      <image src="../../image/icon/onedayTravle.png"></image>
+      <text>一日游</text>
+    </view>
+  </view>
+</view>
+
+<!--blank-->
+<view class="blank"></view>
+
+<!--出行风向标-->
+<view class="horizontalScroll">
+  <view class="fixedTit">
+    <text>出行风向标</text>
+  </view>
+  <view class="scrollWrap">
+    <scroll-view scroll-x="true"  class="wrap" style="width:100%;height:200rpx;" bindscroll="scroll" >
+      <view wx:for="{{topTit}}" wx:key="" class="scroll_item" style="">
+        <view class="item_inner">
+          <image src="{{topTitIcon[index]}}"></image>
+          <text>{{item}}</text>
+        </view>
+      </view>
+  </scroll-view>
+  </view>
+</view>
+
+<view class="recommendModule">
+  <view class="recommendModule_left">
+    <view class="left_item" wx:for="{{recommendModule.left}}" style="background: #fff url({{item.img}}) no-repeat top center/cover;">
+      <text class="colorful">{{item.Ftit}}</text>
+      <text class="normal">{{item.Stit}}</text>
+      <text class="normal">{{item.Ttit}}</text>
+    </view>
+  </view>
+  <view class="recommendModule_right">
+     <view class="right_item" wx:for="{{recommendModule.right}}" style="background: #fff url({{item.img}}) no-repeat top center/cover;">
+      <text class="colorful">{{item.Ftit}}</text>
+      <text class="normal">{{item.Stit}}</text>
+      <text class="normal">{{item.Ttit}}</text>
+    </view>
+  </view>
+</view>
+
+<!--blank-->
+<view class="blank"></view>
+
+<!--限时特卖-->
+<view class="limitContainer">
+  <view class="limitTit">限时特卖</view>
+  <view class="limit_goods">
+    <view class="limit_item" wx:for="{{limitGoods}}" bindtap="toWareClip">
+      <image src="{{item.img}}"></image>
+      <text class="itemTit">{{item.tit}}</text>
+      <view class="itemBot">
+        <text class="ifHas">{{item.ifHas}}</text>
+        <text class="price">¥{{item.price}}起</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<!--footer-->
+<view class="footer">
+  <view class="footer_item_img">
+    <image src="../../image/icon/guarantee.png"></image>
+  </view>
+  <view class="footer_item_list">
+    <text wx:for="{{guarantees}}">{{item}}</text>
+  </view>
+</view>
+
+
+<loading hidden="{{loadingHidden}}">
+  加载中...
+</loading>

@@ -1,0 +1,62 @@
+switch{
+	height: 60rpx; 
+	float: right;
+}
+input{
+	width: 100%;
+}
+.receipt_kind{
+	width: calc(100% - 40rpx);
+	height: auto;
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+	align-items: center;
+	/*justify-content:space-between;*/
+	background: #fff;
+	padding: 0 20rpx;
+	margin-top: 40rpx;
+	border-top: 30px solid #f5f4f9;
+}
+.second_receipt_kind{
+	margin-top: 0;
+	border-top: 0px solid #f5f4f9;
+}
+.receipt_item{
+	height: 80rpx;
+	display: flex;
+	align-items: center;
+	/*justify-content: center;*/
+}
+.kind{
+	margin-right: 20rpx;
+}
+.receipt_name, .receipt_number, .receipt_address, .receipt_tel,.receipt_bank, .receipt_BankCode, .receipt_email, .receipt_default{
+	width: calc(100% - 40rpx);
+	height: 80rpx;
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+	align-items: center;
+	/*justify-content:space-between;*/
+	background: #fff;
+	padding: 0 20rpx;
+	border-top: 1px solid #eee;
+}
+.receipt_default{
+}
+.tit{
+	width: 200rpx;
+}
+.suggestion{
+	width: calc(100% - 40rpx);
+	padding: 0 20rpx;
+	margin-top: 30px;
+	color: #f60;
+
+}
+.saveReceipt_add{
+	width: 630rpx;
+	margin: 40rpx auto;
+	
+}

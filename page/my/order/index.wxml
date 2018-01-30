@@ -1,0 +1,51 @@
+<view class="orderList" wx:if="{{orderList.length>0}}">
+  <view class="order_item"  wx:for="{{orderList}}" wx:for-index="listIndex" wx:for-item="listItem">
+    <view class="item_line">
+      <text>订单号:{{listItem.FBILNO1}}</text>
+    </view>
+    <view class="item_line">
+      <text>出发日期:{{listItem.orderdate1}}</text>
+      <text>总价:¥{{listItem.TOTAL}}</text>
+    </view>
+    <view class="item_line travleInfo">
+    <navigator url="../../wareClip/wareInfo/index?id={{listItem.FID_Z_XL}}&name={{listItem.XLMC}}" hover-class="navigator-hover">
+      <image src="{{listItem.FPIC}}"></image>
+      <text>{{listItem.XLMC}}</text>
+      </navigator>
+    </view>
+    <view class="item_line memberInfo">
+      <view class="memberInfo_tit" bindtap="showMember" data-idx="{{listIndex}}">
+        <text>出行人信息</text>
+        <image src="../../../image/icon-arrowdown.png"></image>
+      </view>
+      <view class="memberInfo_main" wx:if="{{ifShowArray[listIndex]}}">
+        <text>成人：{{listItem.CHENGRENNUM}} 儿童A：{{listItem.ERTONGNUMA}} 儿童B：{{listItem.ERTONGNUMB}}</text>
+        <view class="memberEach" wx:for="{{listItem.orderlist1}}" wx:for-index="memberIndex" wx:for-item="memberItem">
+          <text>{{memberItem.XM}}</text>
+          <text>{{memberItem.SFZH}}</text>
+        </view>
+      </view>
+    </view>
+    <!--<view class="item_line operation">
+      <view class="cancelBt" data-ordernum="{{listItem.FBILNO}}" data-idx="{{listIndex}}" bindtap="cancelOrder">删除订单</view>
+
+      <view class="payBt" wx:if="{{listItem.STATUS==1 && listItem.ORDERDATE>nowDate}}" data-ordernum="{{listItem.FBILNO}}" data-idx="{{listIndex}}" bindtap="toPay">退款</view>
+      <view class="payBt {{listItem.STATUS==1 && listItem.ORDERDATE<nowDate?'gray':''}}" wx:if="{{listItem.STATUS==1 && listItem.ORDERDATE<nowDate}}" data-ordernum="{{listItem.FBILNO}}" data-idx="{{listIndex}}">退款</view>
+      <view class="payBt" wx:if="{{listItem.STATUS==2}}" data-ordernum="{{listItem.FBILNO}}" data-idx="{{listIndex}}">退款中</view>
+      <view class="payBt" wx:if="{{listItem.STATUS==3}}" data-ordernum="{{listItem.FBILNO}}" data-idx="{{listIndex}}">退款成功</view>
+      <view class="payBt" wx:if="{{listItem.STATUS==4}}" data-ordernum="{{listItem.FBILNO}}" data-idx="{{listIndex}}">退款失败</view>
+
+    </view>-->
+  </view>
+</view>
+
+  <view wx:else class="noData">
+    <image src="../../../image/icon/order-nodata.png"></image>
+    <text>暂无相关订单信息!</text>
+  </view>
+
+ 
+
+<loading hidden="{{loadingHidden}}">
+  加载中...
+</loading>

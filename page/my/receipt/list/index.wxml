@@ -1,0 +1,29 @@
+<view wx:if="{{receipts.length>0}}" class="receipt_wrap">
+    <view  class="receiptList" wx:for="{{receipts}}" wx:key=''>
+      <view class="top" bindtap="chooseReceipt1" data-index="{{index}}">
+        <!--<text>开具类型:{{item.unitOrIndividual}} {{item.normalOrSpecial}}</text>-->
+        <text>名称:{{item.fname}}</text>
+        <text wx:if="{{item.ftaxno!=''}}">税号:{{item.ftaxno}}</text>
+        <text wx:if="{{item.faddress!=''}}">单位地址:{{item.faddress}}</text>
+        <text wx:if="{{item.fteleno!=''}}">电话号码:{{item.fteleno}}</text>
+        <text wx:if="{{item.fuser!=''}}">开户银行:{{item.fuser}}</text>
+        <text wx:if="{{item.fbankaccountno!=''}}">银行账号:{{item.fbankaccountno}}</text>
+        <text>收票邮箱:{{item.femail}}</text>
+      </view>
+      <view class="clear">
+        <image bindtap="deleteReceipt" data-fbillno="{{item.fbillno}}" data-ftype="{{item.ftype}}"  data-index="{{index}}"src="../../../../image/icon_delete.png"></image>
+      </view>
+      
+    </view>
+</view>
+
+<view wx:else class="noData">
+  <image src="../../../../image/icon/empty-result.png"></image>
+  <text>还未添加发票信息!</text>
+</view>
+
+<button bindtap="addReceipt" type="warn" class="receipt_add" hover-class="addHover">添加</button>
+
+<loading hidden="{{loadingHidden}}">
+  加载中...
+</loading>

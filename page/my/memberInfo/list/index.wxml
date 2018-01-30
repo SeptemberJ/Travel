@@ -1,0 +1,49 @@
+
+<view class="address-list" wx:if="{{memberList.length>0}}">
+	<view class="item" wx:for="{{memberList}}" wx:key="" data-index="{{index}}" >
+    <view class="item_left">
+      <text class="name">{{item.name}} {{item.EFName}}</text>
+      <text class="IDcard">身份证：{{item.simpleIDCard}}</text>
+    </view>
+    <view class="item_right">
+      <view class="icon" data-index="{{index}}" bindtap="del">
+        <image src="../../../../image/icon/delete.png" />
+      </view>
+      <view class="icon" data-index="{{index}}" bindtap="edit">
+        <image src="../../../../image/icon/edit.png" />
+      </view>
+    </view>
+		<!-- first row -->
+		<!--<view class="header" bindtap="{{type==1?'backLeadingIn':''}}" data-index="{{index}}">
+			<text class="realname">{{item.name}}</text>
+			<text class="mobile">{{item.phone}}</text>
+		</view>
+    <view class="summary" bindtap="{{type==1?'backLeadingIn':''}}" data-index="{{index}}">{{item.IDCard}}</view>-->
+		<!-- third row -->
+		<!--<view class="footer">
+			
+      <view class="operation">
+        <view class="container" data-index="{{index}}" bindtap="del"><image src="../../../../image/icon_delete.png" /><text>删除</text>
+        </view>
+      </view>
+      <view class="operation">
+        <view class="container" data-index="{{index}}" bindtap="edit"><image src="../../../../image/icon_edit.png" /><text>编辑</text>
+        </view>
+      </view>
+		</view>-->
+
+	</view>
+</view>
+
+
+<view wx:else class="noData">
+  <image src="../../../../image/icon/error.png"></image>
+  <text>您还未添加任何出行人信息！</text>
+</view>
+
+<button bindtap="addMember" type="warn" class="address-add" hover-class="addHover">添加</button>
+
+
+<loading hidden="{{loadingHidden}}">
+  加载中...
+</loading>

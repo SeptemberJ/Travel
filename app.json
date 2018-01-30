@@ -1,0 +1,61 @@
+{
+  "pages": [
+    "page/chooseCity/index",
+    
+    "page/index/index",
+    "page/wareClip/wareInfo/index",
+    "page/wareClip/calendar/index",
+    "page/destination/index",
+    "page/order/index",
+    
+    "page/module/ticketHotel/index",
+    "page/my/index/index",
+    "page/my/order/index",
+    "page/my/memberInfo/add/index",
+    "page/my/memberInfo/list/index",
+    
+    "dist/tabbar"
+  ],
+  "window": {
+    "backgroundTextStyle": "white",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "旅游",
+    "navigationBarBackgroundColor": "#9980DB",
+    "backgroundColor": "#F2f2f2",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#9980DB",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "page/index/index",
+        "iconPath": "image/icon/home.png",
+        "selectedIconPath": "image/icon/home-active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "page/destination/index",
+        "iconPath": "image/icon/destination.png",
+        "selectedIconPath": "image/icon/destination-active.png",
+        "text": "目的地"
+      },
+      {
+        "pagePath": "page/my/order/index",
+        "iconPath": "image/icon/travel.png",
+        "selectedIconPath": "image/icon/travel-active.png",
+        "text": "订单"
+      },
+      
+      {
+        "pagePath": "page/my/index/index",
+        "iconPath": "image/icon/my.png",
+        "selectedIconPath": "image/icon/my-active.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "debug": true
+}

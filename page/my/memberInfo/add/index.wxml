@@ -1,0 +1,131 @@
+<view class="addPersonalInfo">
+   <!--tip-->
+   <text class="tip">带*号的为必填项(防止信息缺漏，建议全部填写)，若为境外游或港澳游请填写对应的证件信息！</text>
+   <!--<text class="tip" bindtap="leadingIn">导入</text>-->
+   <view class="leadin" wx:if="{{preAddr.length>0 && type==2 || type==3}}" >
+    <image src="../../../../image/icon/leadin.png"></image>
+    <picker bindchange="bindAddrBackIn" value="{{preAddrIdx}}" range="{{preAddr}}" range-key="select">
+      <view class="leadin_text">导入现有出行人信息</view>
+   </picker>
+   </view>
+   
+   <!--旅客姓名-->
+   <view class="travelMember">
+      <view class="info_Item">
+          <text class="columTit">旅客姓名</text>
+      </view>
+      <view class="info_Item">
+          <text class="itemColumTit">*姓名</text>
+          <input placeholder="与证件姓名一致" value="{{memberInfo.name}}" bindinput="changeInfo" data-type="name"/>
+      </view>
+      <view class="info_Item noBorder">
+          <text class="itemColumTit">英文名字</text>
+          <input placeholder="如：张明,填：ZHANGMING" value="{{memberInfo.EFName}}" bindinput="changeInfo" data-type="EFName"/>
+      </view>
+      <!--<view class="info_Item">
+          <text class="itemColumTit">英文名</text>
+          <input placeholder="如：张小明,填：XIAOMING" value="{{memberInfo.ELName}}" bindinput="changeInfo" data-type="ELName"/>
+      </view>-->
+   </view>
+   <!--证件信息-->
+   <view class="travelMember">
+      <view class="info_Item">
+          <text class="columTit">证件信息</text>
+      </view>
+       <view class="info_Item">
+          <text class="itemColumTit">*身份证号码</text>
+          <input type="idcard" placeholder="护照身份证号码" value="{{memberInfo.IDCard}}" bindinput="changeInfo" data-type="IDCard"/>
+      </view>
+      <view class="info_Item">
+          <text class="itemColumTit">证件有效期</text>
+          <!--<picker mode="date" value="{{IDLimitDateS}}" bindchange="bindIDLimitDateSChange">
+              <view class="picker">{{IDLimitDateS}}</view>
+          </picker>-->
+          <picker mode="date" value="{{IDLimitDateE}}" bindchange="bindIDLimitDateEChange">
+              <view class="picker">{{IDLimitDateE}}</view>
+          </picker>
+      </view>
+      <view class="info_Item">
+          <text class="itemColumTit">证件类型</text>
+          <picker bindchange="bindCertificateKindChange" value="{{certificateKindIdx}}" range="{{certificateKindArray}}">
+          <view class="picker">{{certificateKindArray[certificateKindIdx]}}</view>
+          </picker>
+          <!--<image class="arrowDown" src="../../../../image/icon-arrowdown.png"></image>-->
+      </view>
+      <view class="info_Item">
+          <text class="itemColumTit">证件号码</text>
+          <input placeholder="请输入证件号码" value="{{memberInfo.certificateNum}}" bindinput="changeInfo" data-type="certificateNum"/>
+      </view>
+      <view class="info_Item">
+          <text class="itemColumTit">签证有效期</text>
+          <!--<picker mode="date" value="{{credentialLimitDateS}}" bindchange="bindLimitDateSChange">
+              <view class="picker">{{credentialLimitDateS}}</view>
+          </picker>-->
+          <picker mode="date" value="{{credentialLimitDateE}}" bindchange="bindLimitDateEChange">
+              <view class="picker">{{credentialLimitDateE}}</view>
+          </picker>
+      </view>
+      <view class="info_Item">
+          <text class="itemColumTit">发证日期</text>
+          <picker mode="date" value="{{issueDate}}" bindchange="bindIssueDateChange">
+              <view class="picker">{{issueDate}}</view>
+          </picker>
+      </view>
+      <view class="info_Item">
+          <text class="itemColumTit">发证机关</text>
+          <input placeholder="请输入发证机关" value="{{memberInfo.issueOffice}}" bindinput="changeInfo" data-type="issueOffice"/>
+      </view>
+      <view class="info_Item noBorder">
+          <text class="itemColumTit">证件签发地</text>
+          <input placeholder="请输入证件签发地" value="{{memberInfo.issuePlace}}" bindinput="changeInfo" data-type="issuePlace"/>
+      </view>
+   </view>
+   <!--其他信息-->
+   <view class="travelMember">
+      <view class="info_Item">
+          <text class="columTit">其他信息</text>
+      </view>
+      <view class="info_Item">
+          <text class="itemColumTit">*性别</text>
+          <picker value="{{sex}}"  bindchange="bindSexChange" value="{{sexIdx}}" range="{{sexArray}}">
+              <view class="picker">{{sexArray[sexIdx]}}</view>
+          </picker>
+      </view>
+      <view class="info_Item">
+          <text class="itemColumTit">*年龄</text>
+          <input placeholder="请输入您的年龄" type="number" value="{{memberInfo.age}}" bindinput="changeInfo" data-type="age"/>
+      </view>
+      <view class="info_Item">
+          <text class="itemColumTit">出生日期</text>
+          <picker mode="date" value="{{birthDate}}" bindchange="bindBirthDateChange">
+              <view class="picker">{{birthDate}}</view>
+          </picker>
+      </view>
+      <view class="info_Item">
+          <text class="itemColumTit">出生地</text>
+          <input placeholder="请输入您的出生地" value="{{memberInfo.birthPlace}}" bindinput="changeInfo" data-type="birthPlace"/>
+      </view>
+      <view class="info_Item">
+          <text class="itemColumTit">*联系电话</text>
+          <input placeholder="请输入您的联系电话" type="number" value="{{memberInfo.phone}}" bindinput="changeInfo" data-type="phone"/>
+      </view>
+      <view class="info_Item">
+          <text class="itemColumTit">*地址</text>
+          <input placeholder="请输入您的地址" value="{{memberInfo.addr}}" bindinput="changeInfo" data-type="addr"/>
+      </view>
+      <view class="info_Item">
+          <text class="itemColumTit">*紧急联系人</text>
+          <input placeholder="请输入紧急联系人" value="{{memberInfo.emergencyContact}}" bindinput="changeInfo" data-type="emergencyContact"/>
+      </view>
+      <view class="info_Item noBorder">
+          <text class="itemColumTit">*紧急联系电话</text>
+          <input placeholder="请输入紧急联系电话" type="number" value="{{memberInfo.emergencyPhone}}" bindinput="changeInfo" data-type="emergencyPhone"/>
+      </view>
+   </view>
+</view>
+
+<button type="warn" class="savePersonalInfo" disabled="{{canWork}}" bindtap="saveMemberInfo">保存</button>
+
+<loading hidden="{{loadingHidden}}">
+  加载中...
+</loading>

@@ -1,0 +1,92 @@
+page{
+  background: #99a5ae;
+}
+.addPersonalInfo{
+  width: 720rpx;
+  height: auto;
+  padding: 0 15rpx;
+  margin: 20rpx auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.tip{
+  color: #fff;
+}
+.leadin{
+  height: 50rpx;
+  display: flex;
+  margin-top: 10rpx;
+}
+.leadin image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.leadin_text{
+  line-height: 50rpx;
+  color: #fff;
+}
+.travelMember{
+  width: 680rpx;
+  height: auto;
+  background: #fff;
+  margin: 20rpx auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rpx 20rpx;
+  border-radius: 10rpx;
+}
+.info_Item{
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: #fff;
+}
+.info_Item{
+  border-bottom: 1px solid #eee;
+}
+.noBorder{
+  border-bottom: 0px solid #eee;
+}
+.columTit{
+  width: 100%;
+  font-size: 32rpx;
+}
+.itemColumTit{
+  width: 200rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.info_Item  input{
+  width: 480rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.info_Item  picker{
+  width: 480rpx;
+  /*width: 240rpx;*/
+  height: 50rpx;
+}
+.picker{
+  height: 100%;
+  line-height: 50rpx;
+}
+.wide{
+  width: 480rpx;
+  height: 50rpx;
+}
+.arrowDown{
+  width: 30rpx;
+  height: 30rpx;
+  transform: rotate(90deg);
+}
+.savePersonalInfo{
+  width: 50%;
+  margin: 20rpx auto;
+  
+}

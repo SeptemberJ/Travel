@@ -1,0 +1,90 @@
+<!--searchBlock-->
+<view class="searchBlock">
+  <view class="searchBox">
+    <view class="searchIcon">
+      <image src="../../image/icon/search.png"></image>
+    </view>
+    <view class="searchInput">
+      <input placeholder="目的地、主题或关键字" bindinput="inputSearchKey" value="{{SearchKey}}"/>
+    </view>
+    <view class="searchClear" wx:if="{{SearchKey!=''}}">
+      <image src="../../image/icon/close.png" bindtap="clearSearchKey"></image>
+    </view>
+    <view class="searchGo" wx:if="{{SearchKey!=''}}">
+      <text>搜索</text>
+    </view>
+  </view>
+</view>
+
+<!--searchResult-->
+<view class="searchResult" wx:if="{{SearchKey!=''}}">
+  <view class="result_item" wx:for="{{resultList}}">
+    <text>{{item}}</text>
+  </view>
+</view>
+
+<!--destinationList-->
+<view class="destinationList" wx:if="{{SearchKey==''}}">
+  <!--menu-->
+  <scroll-view scroll-y="true" class="menu_block">
+    <view class="menu_block_inner">
+      <block wx:for="{{menuList}}" wx:key="">
+          <view class="menuListF_items {{cur==index ? 'active' : ''}}" bindtap="menuTabChange"  data-index="{{index}}" data-id="{{index}}">
+          {{item}}
+          </view>
+      </block>
+    </view>
+  </scroll-view>
+  <!--ware-->
+  <scroll-view scroll-y="true" class="ware_block">
+    <view class="ware_block_inner" wx:if="{{placesList}}">
+          <!--wareClip-->
+          <view class="column_tit" wx:if="{{placesList.hotList.length>0}}">
+            <text class="border"></text>
+            <text>当季热门</text>
+          </view>
+          <view class="wareClip">
+            <block wx:for="{{placesList.hotList}}" wx:key="" wx:for-item="hotItem">
+              <view class="wareClip_item">
+                <navigator url="../ware/index?id={{hotItem.id}}">
+                  <view class="inner_block">
+                    <block wx:if="{{hotItem}}" wx:key="">
+                      <view class="img_block">
+                        <image src="{{hotItem.img}}" mode="scaleToFill"></image>
+                      </view>
+                      <view class="addr">
+                        <text>{{hotItem.addr}}</text>
+                      </view>
+                    </block>
+                  </view>
+                </navigator>
+              </view>
+            </block>
+          </view>
+
+          <!--columnListBlock-->
+          <view class="columnListBlock" wx:if="{{placesList.columnList.length>0}}" wx:for="{{placesList.columnList}}" wx:for-index="columnIndex" wx:for-item="columnItem">
+            <!--wareClip-->
+          <view class="column_tit">
+            <text class="border"></text>
+            <text>{{columnItem.tit}}</text>
+          </view>
+          <view class="columnListClip">
+            <block wx:for="{{columnItem.places}}" wx:key="" wx:for-index="placeIndex" wx:for-item="placeItem">
+              <view class="columnListClip_item">
+                <!--<navigator url="../ware/index?id={{item.id}}">-->
+                  <text class="placeName">{{placeItem.placeName}}</text>
+                <!--</navigator>-->
+              </view>
+            </block>
+          </view>
+          </view>
+
+    </view> 
+    <view wx:else class="noData">
+      <image src="../../image/icon/error.png"></image>
+      <text>暂无数据</text>
+    </view> 
+  </scroll-view>
+
+</view>

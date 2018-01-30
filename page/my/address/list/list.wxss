@@ -1,0 +1,115 @@
+/*page background*/
+page {
+	background: #eee;
+}
+
+/*that means a record*/
+.item {
+	margin-bottom: 20rpx;
+	background: #fff;
+	padding: 20rpx;
+	border-top: 1px solid #FFF;
+	border-image: url('https://www.4008803828.com/wscxm/image/strap.jpg') 30 30 round;
+}
+/*姓名与手机号码*/
+.item .header {
+	display: flex;
+    flex-direction: row;
+	font-size: 36rpx;
+	color: #333;
+	line-height: 72rpx;
+}
+
+.item .header text {
+	flex-grow: 5;
+	/*margin-right: 40rpx;*/
+}
+.item .header text:nth-child(2) {
+	text-align: right;
+}
+
+.item .summary {
+	color: #333;
+	font-size: 32rpx;
+	line-height: 60rpx;
+}
+
+.item .footer {
+	border-top: 1px solid #ccc;
+	font-size: 30rpx;
+	color: #999;
+	/*padding-left: 10rpx;*/
+	padding-top: 10rpx;
+	display: flex;
+	flex-direction: row;
+  align-items: center;
+	justify-content: space-between;
+}
+
+/*设为默认地址*/
+.set-default {
+	display: flex;
+	flex-grow:5;
+	align-items: center;
+}
+
+.set-default text {
+	margin-left: 10rpx;
+}
+
+/*编辑与删除操作*/
+.item .footer .operation{
+	display: flex;
+	flex-direction: row;
+}
+/*.item .footer .operation .del{
+	flex-grow:5;
+	
+	justify-content:flex-end;
+}
+.item .footer .operation .edit{
+	flex-grow:5;
+	justify-content:flex-start;
+}*/
+
+.item .footer .operation .container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.container{
+  margin-bottom: 0;
+}
+
+.item .footer .operation .container image {
+	width: 60rpx;
+	height: 60rpx;
+}
+
+.item .footer .operation .container text {
+	margin-left: 10rpx;
+}
+
+/*地址列表包装容器*/
+.address-list {
+	margin-bottom: 56px;
+}
+
+/*添加地址按钮*/
+.address-add {
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	background: #1296db;
+	border-radius: 0;
+	color: #fff;
+	font-weight: bold;
+}
+.addHover{
+	background: #ccc;
+}
+.addressNull{
+    width: 100%;
+    margin: 20rpx auto;
+    text-align: center;
+}

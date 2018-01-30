@@ -1,0 +1,141 @@
+.orderList{
+  padding: 20rpx;
+  height: auto;
+  background: #efeff4;
+}
+.order_item{
+  width: calc(100% - 20rpx);
+  height: auto;
+  background: #fff;
+  margin-bottom: 40rpx;
+  padding: 10rpx;
+  border-radius: 10rpx;
+}
+.order_item:not(:first-of-type){
+  /* border-top: 30rpx solid #fff;
+  padding: 20rpx 0 40rpx 0;
+  border-image: url('https://www.4008803828.com/wscxm/image/strap2.jpg') 30 30 round; */
+}
+.item_line{
+  width: 100%;
+  height: 60rpx;
+  display: flex;
+}
+.item_line text{
+  width: 100%;
+  height: 100%;
+  line-height: 60rpx;
+}
+.item_line text:nth-of-type(2){
+  text-align: right;
+}
+.travleInfo{
+  width: 670rpx;
+  height: 170rpx;
+  padding: 10rpx;
+  align-items: center;
+  justify-content: space-between;
+  background: #f5f5f5;
+  border-top: 4rpx solid #fff;
+  border-bottom: 4rpx solid #fff;
+	border-image: url('https://www.4008803828.com/wscxm/image/strap.jpg') 30 30 round;
+  margin: 10rpx 0;
+  }
+.travleInfo navigator{
+  width: 670rpx;
+  height: 170rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.travleInfo image{
+  width: 150rpx;
+  height: 150rpx;
+ 
+  }
+.travleInfo text{
+  width: 480rpx;
+  height: 150rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  line-height: 50rpx;
+  }
+
+.memberInfo{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+.memberInfo_tit{
+  width: 100%;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+}
+.memberInfo_tit text{
+  width: 100%;
+  height: 100%;
+  line-height: 60rpx;
+  font-weight: bold;
+}
+.memberInfo_tit image{
+  width: 50rpx;
+  height: 50rpx;
+  transform: rotate(90deg);
+}
+.memberInfo_main{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.memberEach{
+  width: 100%;
+  height: 60rpx;
+  display: flex;
+}
+.memberEach{
+  /*border-top: 1px solid #eee;*/
+}
+.memberEach text{
+  width: 100%;
+  height: 60rpx;
+  font-size: 25rpx;
+  color: #888;
+}
+.operation{
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+	margin: 20rpx auto; 
+
+}
+.evaluateBt,.cancelBt,.logisticsBt,.confirmBt,.payBt{
+  width: 150rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f60;
+  color: #fff;
+  border-radius: 5rpx;
+  margin: auto 10rpx;
+}
+.gray{
+  background: #ccc;
+  color: #fff;
+}
+.cancelBt,.logisticsBt{
+  background: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+}

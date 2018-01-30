@@ -1,0 +1,120 @@
+
+
+<!--仓库管理员WH-->
+<view class="WH-block" wx:if="{{role==3?true:false}}">
+<view class="topBox">
+    <view class="topItem"><image src="../../images/icon/order(1).png"/>
+    </view>
+    <view class="topItem">
+        <!--<text></text>-->
+        <text class="orderaAmount">{{recycleBySE.name.length}}</text>
+        <text>位物流商的回单未入库</text>
+    </view>
+</view>
+
+<view class="addressNull" wx:if="{{recycleBySE.name.length<=0?true:false}}" bindtap="toAddAddr">所有回单都已入库！</view>
+<!--orderList block-->
+<view class="orderList" wx:else>
+    <view class="orderListItem" wx:for="{{recycleBySE.name}}" wx:key="" bindtap="WH_goDetail" data-index="{{index}}" >
+        <view class="bellImg"><image src="../../images/icon/customer(3).png"/>
+        </view>
+        <view class="orderCont">
+            <text class="bigF">物流商：{{item}}</text>
+            <text class="samlF">共{{recycleBySE.delname[0][index].count}}份回单</text>
+        </view>
+        <view class="right">
+			<image  data-index="{{index}}" src="../../images/icon_edit.png" />
+		</view>
+    </view>
+</view>
+
+
+</view>
+
+
+
+
+<!--供应商SP-->
+<view class="SP-order" wx:elif="{{role==1?true:false}}">
+
+<view class="orderTab">
+  <view class="item {{current == index ? 'active' : ''}}" wx:for="{{orderState}}" wx:key="" data-index="{{index}}" bindtap="changeTab"><text>{{orderState[index]}}</text></view>
+</view>
+
+<view class="InfoNull" wx:if="{{changeTabStock.length<=0?true:false}}" bindtap="toAddAddr">
+    <image bindtap="SP_goDetail"src="../../images/icon/orderNull.png" />
+<text>您还没有相关的订单！</text>
+</view>
+
+<scroll-view scroll-y="true"  wx:else style="height: 100%;" bindscrolltoupper="refesh2">
+<view class="stock-list">
+	<view class="stockListItem"  wx:for="{{changeTabStock}}" wx:key="" data-index="{{index}}">
+	<!--stockInfor-->
+		<view class="left"  bindtap="SP_goDetail" data-index="{{index}}">
+			<!-- first row -->
+			<view class="listBox">
+                <view class="listItem">
+                    <text class="amountItem">订单号：</text>
+                    <text class="Val">{{item.orderno}}</text>
+                </view>
+			</view>
+            <view class="listBox">
+                <view class="listItem">
+                    <text class="amountItem">预约数量：</text>
+                    <text class="Val">{{item.snumber}}</text>
+                </view>
+			</view>
+			<view class="listBox">
+				<text class="dateItem">申请日期：</text>
+				<text class="Val">{{item.submitdate1}}</text>
+			</view>
+		</view>
+	<!--details or delete-->
+		<view class="right">
+            <image  wx:if="{{item.status==1 || item.status==2 || item.status==4}}" bindtap="cancelOrder" data-index="{{index}}" src="../../images/icon_delete.png" style="" />
+			<image  wx:else data-index="{{index}}" bindtap="SP_goDetail"src="../../images/icon-arrowdown.png" />
+            
+		</view>
+	</view>
+</view>
+</scroll-view>
+
+</view>
+
+
+
+
+<!--物流商SE-->
+<scroll-view scroll-y="true"  wx:else style="height: 100%;" bindscrolltoupper="refesh">
+
+<view class="SE-block">
+<view class="topBox">
+    <view class="topItem"><image src="../../images/logistics.png"/>
+    </view>
+    <view class="topItem">
+        <text>您共有</text>
+        <text class="orderaAmount">{{RecyclingAmount}}</text>
+        <text>份派单</text>
+    </view>
+</view>
+<!--orderList block-->
+<view class="orderList">
+    <view class="orderListItem" wx:for="{{RecyclingList}}" wx:key="" bindtap="SE_goDetail" data-index="{{index}}">
+        <view class="bellImg"><image src="../../images/bell.png"/>
+        </view>
+        <view class="orderCont">
+            <text>回单号:{{item.recycleno}}</text>
+            <!--<text>共{{item.countsupplier}}笔订单</text>-->
+            <text>派单日期:{{item.curdate1}}</text>
+        </view>
+        <view class="right">
+			<image  data-index="{{index}}" src="../../images/icon-arrowdown.png" />
+		</view>
+    </view>
+</view>
+</view>
+</scroll-view>
+
+<loading hidden="{{loadingHidden}}">
+  加载中...
+</loading>

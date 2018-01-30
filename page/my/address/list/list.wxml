@@ -1,0 +1,47 @@
+
+
+
+<view class="address-list" wx:if="{{addressList.length>0}}">
+	<view class="item" wx:for="{{addressList}}" wx:key="" bindtap="chooseAddress" data-index="{{index}}" >
+		<!-- first row -->
+		<view class="header" >
+			<text class="realname">{{item.fname}}</text>
+			<text class="mobile">{{item.fmobile}}</text>
+		</view>
+
+		
+		<!-- second row  {item.region}}{{item.town}}-->
+		<view class="summary">{{item.fprovince}}{{item.fcity}}{{item.farea}}{{item.faddress}}</view>
+		<!-- third row -->
+		<view class="footer">
+			<!-- is default switch -->
+      <!--<view class="operation">
+        <view class="container" data-index="{{index}}" bindtap="setDefault"><icon type="{{item.status == 1 ? 'success_circle' : 'circle'}}"/><text>默认地址</text>
+        </view>
+      </view>-->
+			<!-- edit and delete button -->
+      <view class="operation">
+        <view class="container" data-index="{{index}}" bindtap="edit"><image src="../../../../image/icon/icon_edit.png" /><text>编辑</text>
+        </view>
+      </view>
+      <view class="operation">
+        <view class="container" data-index="{{index}}" bindtap="del"><image src="../../../../image/icon/icon_delete.png" /><text>删除</text>
+        </view>
+      </view>
+		</view>
+	</view>
+</view>
+
+<!--<view class="addressNull" wx:else bindtap="toAddAddr">您还未添加回收地址信息！</view>-->
+
+<view wx:else class="noData">
+  <image src="../../../../image/icon/error.png"></image>
+  <text>您还未添加回收地址信息！</text>
+</view>
+
+<button bindtap="add" class="address-add" hover-class="addHover">添加</button>
+
+
+<loading hidden="{{loadingHidden}}">
+  加载中...
+</loading>

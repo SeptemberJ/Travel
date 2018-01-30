@@ -1,0 +1,115 @@
+page{
+	background: #f5f4f9;
+}
+.receipt_wrap{
+	width: 100%;
+	/*width: calc(100% - 40rpx);*/
+	height: auto;
+	margin-bottom: 150rpx;
+}
+.receiptList{
+	width: calc(100% - 40rpx);
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+	margin: 0 auto 40rpx auto;
+	/*margin-bottom: 20rpx;*/
+	padding: 0 20rpx;
+	background: #fff;
+	/*border-bottom: 30rpx solid #FFF;
+	border-image: url('../../../../image/strap.png') 30 30 round;*/
+}
+.top{
+	width: 630rpx;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+}
+.clear{
+	width: 100%;
+	height: 60rpx;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	background: #fff;
+  border-top: 1px solid #eee;
+}
+.clear image{
+	width: 60rpx;
+	height: 60rpx;
+}
+.receiptList text{
+	height: 60rpx;
+	line-height: 60rpx;
+	/*color: #BBFFFF;*/
+}
+/*添加地址按钮*/
+.receipt_add{
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	background: #000;
+	border-radius: 0;
+	color: #fff;
+	font-weight: bold;
+}
+/*.coupon_block{
+	width: 710rpx;
+	height: 270rpx;
+	display: flex;
+	flex-direction: column;
+	margin: 20rpx auto 40rpx auto;
+	border-radius: 20rpx;
+	position: relative;
+	overflow: hidden;
+}
+.colorBar{
+	width: 100%;
+	height: 40rpx;
+	background: #f64947;
+	border-radius: 20rpx;
+}
+.mainInfo{
+	width:100%;
+	height: 250rpx;
+	background: #fff;
+	position: absolute;
+	top: 20rpx;
+	left: 0; 
+}
+.mainInfo_item{
+	padding: 0 20rpx;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content:space-between;
+}
+.coupon_tit{
+	height: 150rpx;
+}
+.coupon_tit text{
+	color: #f64947;
+	font-size: 36rpx;
+	font-weight: bold;
+}
+
+.coupon_term{
+	height: 100rpx;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content:flex-start;
+}
+.coupon_term text{
+	width: 100%;
+	height: 50rpx;
+}
+.coupon_term text:nth-of-type(1){
+	color: #f64947;
+}
+.coupon_term text:nth-of-type(2){
+	color: #777;
+}*/
