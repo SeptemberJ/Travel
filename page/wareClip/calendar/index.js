@@ -27,7 +27,7 @@ Page({
   onLoad: function (options) {
     this.setData({
       id:options.id,
-      lineName: options.name
+      lineName: options.name  //encodeURI(
     })
     let date = new Date();
     let nowDay = date.getDate();
@@ -199,7 +199,7 @@ Page({
         // id: app.globalData.shopId,
         xqxlmc: name
       },
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: {
         'content-type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json',
@@ -210,8 +210,10 @@ Page({
       let LimitDate = res.data[1].split('-')
       let MaxYear = LimitDate[0]
       let MaxMonth = LimitDate[1]
+      console.log('MaxYear--' + MaxYear + '--MaxMonth--' + MaxMonth)
+      console.log(this.data.cur_year <= MaxYear || this.data.cur_month <= MaxMonth)
       if (res.data[0].length <= 0 && this.data.Times==1){
-        if (this.data.cur_year <= MaxYear && this.data.cur_month <= MaxMonth){
+        if (this.data.cur_year <= MaxYear || this.data.cur_month <= MaxMonth){
           
           this.handleCalendarNext()
         }else{

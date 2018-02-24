@@ -52,6 +52,7 @@ Page({
             EFName: '',
             ELName: '',
             IDCard: '',
+            cjzj:'',
             IDLimitDateE: '',
             IDLimitDateS: '',
             addr: '',
@@ -261,10 +262,10 @@ Page({
           success: (res)=> {
             if (res.data.kind =='境外'){
               //境外游证件类型和证件号码必填
-              if (this.data.memberInfo.certificateKind == 0 || this.data.memberInfo.certificateNum == '') {
+              if (this.data.memberInfo.certificateKind == 0 || this.data.memberInfo.certificateNum == '' || this.data.memberInfo.cjzj == '') {
                 wx.showModal({
                   title: '提示',
-                  content: '您选择的是境外游证件类型和证件号码必须填写!',
+                  content: '您选择的是境外游,出境证件、证件类型和证件号码必须填写!',
                   showCancel: false,
                   success: function (res) {
                     if (res.confirm) {

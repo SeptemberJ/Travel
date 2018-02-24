@@ -46,6 +46,10 @@
           </picker>
       </view>
       <view class="info_Item">
+          <text class="itemColumTit">出境证件</text>
+          <input placeholder="请输入出境证件" value="{{memberInfo.cjzj}}" bindinput="changeInfo" data-type="cjzj"/>
+      </view>
+      <view class="info_Item">
           <text class="itemColumTit">证件类型</text>
           <picker bindchange="bindCertificateKindChange" value="{{certificateKindIdx}}" range="{{certificateKindArray}}">
           <view class="picker">{{certificateKindArray[certificateKindIdx]}}</view>

@@ -109,6 +109,7 @@ Page( {
     this.getData(0)
   },
   toWareClip: function(e){
+    console.log('e.currentTarget.dataset.linename--' + e.currentTarget.dataset.linename)
     wx.navigateTo({
       url: '../wareClip/calendar/index?id=' + e.currentTarget.dataset.id + '&name=' + e.currentTarget.dataset.linename,
     })
