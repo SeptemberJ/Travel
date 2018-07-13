@@ -92,7 +92,11 @@
 <!--线路简介-->
 <view class="introduction">
   <text class="columnTit">线路简介</text>
-  <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  <view class='introductionImgWrap'>
+    <image mode='widthFix' src='../../../image/ceshi1.jpg'></image>
+    <!-- <image src='{{travelInfo.FDA}}'></image> -->
+  </view>
+  <!-- <template is="wxParse" data="{{wxParseData:article.nodes}}"/> -->
 </view>
 
 <!--submitBt-->

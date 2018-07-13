@@ -235,36 +235,17 @@ Page({
     }).then((res) => {
       console.log('单独详情backInfo---=')
       console.log(res.data)
-      // var reg = /<body[^>]*>([\s\S]*)<\/body>/
-      //var temp = reg.exec(res.data[0].FDA)[1];
-      //var ToLowerCase = res.data[0].FDA.toLowerCase()
 
 
-      var HtmlTxt = res.data[0].FDA.replace(/width:\s/, "").replace(/span\s+/g, "span ").replace(/height:\s/, "").replace(/height=\d+/g, "").replace(/height:\w+/g, "").replace(/margin-left:/g, "").replace(/margin-right:/g, "").replace(/<font-family\w+/g, "").replace(/text-indent/g, "").replace(/width:\w+/g, "").replace(/width=\w+/g, "")
+      // var HtmlTxt = res.data[0].FDA.replace(/width:\s/, "").replace(/span\s+/g, "span ").replace(/height:\s/, "").replace(/height=\d+/g, "").replace(/height:\w+/g, "").replace(/margin-left:/g, "").replace(/margin-right:/g, "").replace(/<font-family\w+/g, "").replace(/text-indent/g, "").replace(/width:\w+/g, "").replace(/width=\w+/g, "")
 
-//.replace(/margin-right:\.+/g, "")
-        //.replace(/style=/g, " style=")
-      // var AfterFDA1 = res.data[0].FDA.replace(/width:\s/, "")
-      // var AfterFDA2 = AfterFDA1.replace(/span\s+/g, "span ")
-      // var AfterFDA3 = AfterFDA2.replace(/height:\s/, "")
 
-      // var AfterFDA4 = AfterFDA3.replace(/height=\d+/g, "")
-      // var AfterFDA5 = AfterFDA4.replace(/height:\w+/g, "")
-      // var AfterFDA6 = AfterFDA5.replace(/margin-left:\w+/g, "")
-      // var AfterFDA7 = AfterFDA6.replace(/<font-family\w+/g, "")
-
-      // var AfterFDA8 = AfterFDA7.replace(/text-indent/g, "")
-      // var AfterFDA9 = AfterFDA8.replace(/width:\w+/g, "")
-
-      // var AfterFDA10 = AfterFDA9.replace(/width=\w+/g, "")
-
-      //console.log(HtmlTxt)
       //其他费用
       res.data[0].qita.map((item,idx)=>{
         item.choosed = false
       })
 
-      WxParse.wxParse('article', 'html', HtmlTxt, this, 5);
+      //WxParse.wxParse('article', 'html', HtmlTxt, this, 5);
       this.setData({
         travelInfo: res.data[0],
         //attachedCostList: res.data[0].qita,

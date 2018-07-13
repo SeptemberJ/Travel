@@ -213,7 +213,7 @@ Page({
       console.log('MaxYear--' + MaxYear + '--MaxMonth--' + MaxMonth)
       console.log(this.data.cur_year <= MaxYear || this.data.cur_month <= MaxMonth)
       if (res.data[0].length <= 0 && this.data.Times==1){
-        if (this.data.cur_year <= MaxYear || this.data.cur_month <= MaxMonth){
+        if (this.data.cur_year <= MaxYear && this.data.cur_month <= MaxMonth){
           
           this.handleCalendarNext()
         }else{

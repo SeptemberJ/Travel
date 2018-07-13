@@ -1,8 +1,8 @@
 {
   "pages": [
     "page/chooseCity/index",
-    
     "page/index/index",
+    
     "page/wareClip/wareInfo/index",
     "page/wareClip/calendar/index",
     "page/destination/index",

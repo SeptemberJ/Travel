@@ -13,7 +13,7 @@
     </swiper-item>
   </block>
 </swiper>
-
+<!-- <button open-type="getUserInfo">授权</button> -->
 <!--module-->
 <view class="module">
   <view class="module_line first_line">

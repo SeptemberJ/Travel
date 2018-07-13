@@ -214,6 +214,13 @@ swiper-item image {
      flex-direction: column;
      margin: 10rpx auto 120rpx auto;
 }
+.introductionImgWrap{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
 .info_Item{
   width: 100%;
   height: 80rpx;
