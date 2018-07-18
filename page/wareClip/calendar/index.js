@@ -236,8 +236,8 @@ Page({
             let eachArray = temp.splice(0, 8)
             let obj = {
               'FID_Z': eachArray[0],
-              'JIAGE': eachArray[3],
-              'YH1': eachArray[4],
+              'JIAGE': eachArray[4],
+              'YH1': eachArray[3],
               'ZWS': eachArray[7],
               'DAY': eachArray[6],
             }

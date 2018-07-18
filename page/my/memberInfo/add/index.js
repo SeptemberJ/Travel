@@ -300,6 +300,9 @@ Page({
 
     //获取出行人信息列表
     getMemberInfoList: function () {
+      wx.showLoading({
+        title: '加载中',
+      })
       let requestPromisified = util.wxPromisify(wx.request);
       requestPromisified({
         url: h.main + '/selecthz.html',
@@ -327,6 +330,7 @@ Page({
           wholePreAddr: res.data,
           preAddr: simpleIDPreAddr
         })
+        wx.hideLoading();
       }).catch((res) => {
         console.error("get 行人信息 failed")
         console.log(res)

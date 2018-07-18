@@ -181,10 +181,12 @@ Page({
             console.log(res.data)
             if (res.data[0]==1){
               this.weChatPay(res.data[1], obj.orderInfo.totalPrice)
+              //this.updateOrderStstus(res.data[1])
             }else{
               wx.showToast({
-                title: '下单失败!',
-                image: '../../image/icon/attention.png'
+                title: '提交订单失败!',
+                image: '../../image/icon/attention.png',
+                duration: 2000
               })
               this.setData({
                 canDo: false,
@@ -298,9 +300,42 @@ Page({
                   icon: 'success',
                   duration: 1000
                 })
-                
+                wx.navigateBack({
+                })
                 //支付成功修改订单状态
-                this.updateOrderStstus(1, orderNum)
+                wx.request({
+                  url: h.main + '/updateorder.html',
+                  data: {
+                    status: 1,
+                    FBillNo: orderNum,
+                    base: app.globalData.base
+                  },
+                  method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                      header: {
+                          'content-type': 'application/x-www-form-urlencoded',
+                          'Accept': 'application/json',
+                      },
+                  success: (res) => {
+                    // success
+                    console.log('支付失败修改订单状态backInfo----')
+                    console.log(res)
+                    if(res.data==1){
+                      wx.navigateBack();
+                    }else{
+                      wx.showToast({
+                        title: '订单状态修改失败!',
+                        image: '../../image/icon/attention.png',
+                        duration: 2000
+                      })
+                    }
+                  },
+                  fail: function () {
+                    // fail
+                  },
+                  complete: function () {
+                    // complete
+                  }
+                })
               },
               'fail': (res) => {
                 console.log('调起失败-----')
@@ -309,10 +344,50 @@ Page({
                 // })
                 console.log(res)
                 //支付失败修改订单状态
-                this.updateOrderStstus(0, orderNum)
-                
+                wx.request({
+                  url: h.main + '/updateorder.html',
+                  data: {
+                    status: 0,
+                    FBillNo: orderNum,
+                    base: app.globalData.base
+
+                  },
+                  method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                  header: {
+                          'content-type': 'application/x-www-form-urlencoded',
+                          'Accept': 'application/json',
+                      },
+                  success: (res) => {
+                    // success
+                    console.log('支付失败修改订单状态backInfo----')
+                    console.log(res)
+                    if (res.data == 1) {
+                      wx.navigateBack();
+                    } else {
+                      wx.showToast({
+                        title: '订单状态修改失败!',
+                        image: '../../image/icon/attention.png',
+                        duration: 2000
+                      })
+                      this.setData({
+                        canDo: false,
+                        loadingHidden: true
+                      })
+                    }
+                  },
+                  fail: function () {
+                    // fail
+                  },
+                  complete: function () {
+                    // complete
+
+                  }
+                })
               }
             })
+
+
+
           },
           fail: (res) => {
           },
@@ -322,15 +397,12 @@ Page({
 
       }
     },
-    //修改订单状态
-    updateOrderStstus: function (orderStatus,orderNum){
-      wx.showLoading({
-        title: '加载中',
-      })
+    //支付成功修改订单状态
+    updateOrderStstus: function (orderNum){
       wx.request({
         url: h.main + '/updateorder.html',
         data: {
-          status: orderStatus,
+          status: 0,
           FBillNo: orderNum,
           base: app.globalData.base
         },
@@ -340,35 +412,27 @@ Page({
           'Accept': 'application/json',
         },
         success: (res) => {
-          wx.hideLoading();
           // success
-          console.log('修改订单状态backInfo----')
+          console.log('支付失败修改订单状态backInfo----')
           console.log(res)
-          if (res.data.type == 1) {
-            if (res.data.result == 'SUCCESS'){
-              wx.navigateBack();
-            }
+          if (res.data == 1) {
+            wx.navigateBack();
           } else {
             wx.showToast({
               title: '订单状态修改失败!',
               image: '../../image/icon/attention.png',
               duration: 2000
             })
+            this.setData({
+              canDo: false,
+              loadingHidden: true
+            })
           }
         },
-        fail: (res) => {
-          wx.hideLoading();
-          wx.showToast({
-            title: '服务器繁忙!',
-            image: '../../image/icon/attention.png',
-            duration: 2000
-          })
+        fail: function () {
           // fail
         },
-        complete: (res) => {
-          this.setData({
-            canDo: false
-          })
+        complete: function () {
           
         }
       })
