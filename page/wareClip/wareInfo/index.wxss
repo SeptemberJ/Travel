@@ -1,4 +1,8 @@
 @import "../../wxParse/wxParse.wxss";
+.TopWrap{
+  width: 100%;
+  display: block;
+}
 /*swiper*/
 swiper{
   height: 200px;   
@@ -209,17 +213,21 @@ swiper-item image {
 /*introduction*/
 .introduction{
      width: 710rpx;
-     height: auto;
+     height: 100px;
+     /* height: auto; */
      display: flex;
      flex-direction: column;
-     margin: 10rpx auto 120rpx auto;
+     margin: 10rpx  auto;
+     margin-bottom: 200px;
 }
 .introductionImgWrap{
   width: 100%;
-  height: auto;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  
+  
 }
 .info_Item{
   width: 100%;

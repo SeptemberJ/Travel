@@ -207,6 +207,12 @@ Page({
     }).then((res) => {
       console.log('出发日期日历backInfo---=')
       console.log(res.data)
+      if (res.data[0].length == 0 && res.data[1] == ''){
+        this.setData({
+          loadingHidden: true
+        })
+        return false
+      }
       let LimitDate = res.data[1].split('-')
       let MaxYear = LimitDate[0]
       let MaxMonth = LimitDate[1]
@@ -214,7 +220,6 @@ Page({
       console.log(this.data.cur_year <= MaxYear || this.data.cur_month <= MaxMonth)
       if (res.data[0].length <= 0 && this.data.Times==1){
         if (this.data.cur_year <= MaxYear && this.data.cur_month <= MaxMonth){
-          
           this.handleCalendarNext()
         }else{
           this.setData({

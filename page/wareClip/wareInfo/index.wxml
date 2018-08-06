@@ -1,4 +1,5 @@
 <import src="../../wxParse/wxParse.wxml"/>
+<view class='TopWrap'>
 <!--GPS-->
 <!--<view class="locationBlock" bindtap="changeCity">
   <image src="../../../image/icon/addressWhite.png"></image>
@@ -93,12 +94,14 @@
 <view class="introduction">
   <text class="columnTit">线路简介</text>
   <view class='introductionImgWrap'>
-    <image mode='widthFix' src='../../../image/ceshi1.jpg'></image>
+  <button bindtap='PDF'>查看详情</button>
+    <!-- <image mode='widthFix' src='../../../image/ceshi1.jpg'></image> -->
     <!-- <image src='{{travelInfo.FDA}}'></image> -->
   </view>
   <!-- <template is="wxParse" data="{{wxParseData:article.nodes}}"/> -->
 </view>
 
+</view>
 <!--submitBt-->
 <view class="footer_total">
     <view class="toatl_price">合计：¥{{totalPrice}}</view>

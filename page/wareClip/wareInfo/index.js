@@ -56,6 +56,28 @@ Page({
       url: '../chooseCity/index',
     })
   },
+  //pdf
+  PDF: function () {
+    wx.showLoading({
+      title: '加载中...',
+    })
+    wx.downloadFile({
+      url: this.data.travelInfo.FDA,
+      success: function (res) {
+        var filePath = res.tempFilePath
+        wx.openDocument({
+          filePath: filePath,
+          success: (res)=> {
+            console.log('打开文档成功')
+            wx.hideLoading()
+          },
+          fail: function (res) {
+            console.log(res)
+          },
+        })
+      }
+    })
+  },
   // 图片预览
   previewImage: function (e) {
     var currentImgUrl = e.currentTarget.dataset.url
